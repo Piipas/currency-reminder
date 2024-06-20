@@ -1,0 +1,19 @@
+{
+  "name": "@repo/envalid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "envalid": "^8.0.0",
+    "@repo/typescript-config": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.6"
+  }
+}
