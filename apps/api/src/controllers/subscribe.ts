@@ -1,4 +1,4 @@
-import { db } from "@/config/db-client";
+import { db } from "@repo/db";
 import { NextFunction, Request, Response } from "express";
 
 export const getExchangeRatesHistory = async (req: Request, res: Response, next: NextFunction) => {

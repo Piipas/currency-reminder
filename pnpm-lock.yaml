@@ -20,6 +20,9 @@ importers:
       '@redis/json':
         specifier: ^1.0.6
         version: 1.0.6(@redis/client@1.5.17)
+      '@repo/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@repo/envalid':
         specifier: workspace:*
         version: link:../../packages/envalid
@@ -86,11 +89,38 @@ importers:
         specifier: ^5
         version: 5.4.5
 
+  apps/reminder:
+    dependencies:
+      '@redis/json':
+        specifier: ^1.0.6
+        version: 1.0.6(@redis/client@1.5.17)
+      '@repo/envalid':
+        specifier: workspace:*
+        version: link:../../packages/envalid
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+      redis:
+        specifier: ^4.6.15
+        version: 4.6.15
+
   packages/db:
     dependencies:
       '@prisma/client':
-        specifier: ^5.15.1
-        version: 5.15.1
+        specifier: ^5.16.2
+        version: 5.16.2
+      '@repo/envalid':
+        specifier: workspace:*
+        version: link:../envalid
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
 
   packages/envalid:
     dependencies:
@@ -524,15 +554,6 @@ packages:
   '@pkgr/core@0.1.1':
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
-
-  '@prisma/client@5.15.1':
-    resolution: {integrity: sha512-fmZRGmsUJ9+VwC/AvfP/PwdpD0xAEyPvNsD9/B3+GYpETq9VejVRT3PiqNvl76q1uYYzNZeo8u/LmzzTetHSEg==}
-    engines: {node: '>=16.13'}
-    peerDependencies:
-      prisma: '*'
-    peerDependenciesMeta:
-      prisma:
-        optional: true
 
   '@prisma/client@5.16.2':
     resolution: {integrity: sha512-+1lmkhR9gHWcTC5oghm2ZKpWljyWdzfazCVlLKUWXVmwHSf52g81aZ8qb6Km5Bs025yBi7puLp3qSLEvktoUtw==}
@@ -3151,8 +3172,6 @@ snapshots:
     optional: true
 
   '@pkgr/core@0.1.1': {}
-
-  '@prisma/client@5.15.1': {}
 
   '@prisma/client@5.16.2': {}
 

@@ -17,6 +17,7 @@
     "@repo/envalid": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@repo/db": "workspace:*",
     "axios": "^1.7.2",
     "express": "^4.19.2",
     "redis": "^4.6.15",
