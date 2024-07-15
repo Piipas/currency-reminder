@@ -49,7 +49,7 @@ const TimeSeriesChart = () => {
       <Card>
         <CardContent className="p-4">
           <ChartContainer config={chartConfig}>
-            <AreaChart accessibilityLayer data={currencyData}>
+            <AreaChart accessibilityLayer data={currencyData} margin={{ left: 25, right: 25 }}>
               <CartesianGrid vertical={false} />
               <XAxis
                 dataKey="day"
@@ -57,6 +57,7 @@ const TimeSeriesChart = () => {
                 axisLine={false}
                 tickMargin={8}
                 tickFormatter={(value) => value.slice(0, 6)}
+                interval={7}
               />
               <YAxis domain={[minValue, maxValue]} hide={true} />
               <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="dot" hideLabel />} />

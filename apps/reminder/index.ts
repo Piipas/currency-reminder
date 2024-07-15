@@ -4,6 +4,7 @@ import axios from "axios";
 import { formatToday, minusDays } from "./lib/utils";
 import { transporter } from "config/nodemailer-client";
 import cron from "node-cron";
+import { db } from "@repo/db";
 
 const getTimeseries = async () => {
   try {
@@ -29,9 +30,13 @@ const getTimeseries = async () => {
 
     if (Number(previousValue) < 10 && timeseries.at(-1)?.MAD > 10) {
       console.log(previousValue);
+      const subscribers = await db.subscriber.findMany({ select: { email: true } });
+
+      const preparedEmails = subscribers.map((subscriber) => subscriber.email);
+
       await transporter.sendMail({
         from: '"Pipas 👻" <boombeach449@gmail.com>', // sender address
-        to: "ismailpipas@gmail.com", // list of receivers
+        to: preparedEmails, // list of receivers
         subject: "USD/MAD updated.", // Subject
         text: "Hello world?", // plain text body
         html: "<b>Hello world?</b>", // html body

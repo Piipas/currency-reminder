@@ -13,6 +13,8 @@ const formSchema = z.object({
 
 const SubscribeForm = () => {
   const [isPending, setIsPending] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -24,6 +26,8 @@ const SubscribeForm = () => {
     try {
       setIsPending(true);
       await axios.post("http://localhost:4000/subscribe", values);
+      form.resetField("email");
+      setIsSuccess(true);
     } catch (error) {
       console.log(error);
     } finally {
@@ -40,8 +44,9 @@ const SubscribeForm = () => {
           render={({ field }) => (
             <FormItem className="flex-grow">
               <FormControl>
-                <Input placeholder="Email" className="h-14 text-lg" {...field} />
+                <Input placeholder="Email, eg: ismailpipas@gmail.com" className="h-14 text-lg" {...field} />
               </FormControl>
+              {isSuccess && <p className="text-green-700 text-center">Congratulations! you are subscribed now.</p>}
               <FormMessage />
             </FormItem>
           )}
