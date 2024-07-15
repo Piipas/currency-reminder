@@ -1,7 +1,7 @@
 import { db } from "@repo/db";
 import { NextFunction, Request, Response } from "express";
 
-export const getExchangeRatesHistory = async (req: Request, res: Response, next: NextFunction) => {
+export const subscribe = async (req: Request, res: Response, next: NextFunction) => {
   const { email, target } = req.body;
 
   try {
