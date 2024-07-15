@@ -3,6 +3,7 @@ import redis from "@repo/redis";
 import axios from "axios";
 import { formatToday, minusDays } from "./lib/utils";
 import { transporter } from "config/nodemailer-client";
+import cron from "node-cron";
 
 const getTimeseries = async () => {
   try {
@@ -14,7 +15,10 @@ const getTimeseries = async () => {
       data: { response },
     } = await axios.get(request_url);
 
-    const timeseries = Object.keys(response).map((day: string) => ({ day, MAD: response[day]["MAD"] }));
+    const timeseries = Object.keys(response).map((day: string) => ({
+      day: new Date(day).toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" }),
+      MAD: response[day]["MAD"],
+    }));
     const latestvalue = timeseries.at(-1)?.MAD;
     const previousValue = await redis.get("currencyreminder:timeseries");
 
@@ -40,5 +44,7 @@ const getTimeseries = async () => {
     redis.disconnect();
   }
 };
+
+// cron.schedule("0 1 * * *", getTimeseries);
 
 getTimeseries();

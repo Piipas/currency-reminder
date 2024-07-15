@@ -17,6 +17,7 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/redis": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@types/node-cron": "^3.0.11",
     "axios": "^1.7.2",
     "node-cron": "^3.0.3",
     "nodemailer": "^6.9.14"
