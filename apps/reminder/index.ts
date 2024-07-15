@@ -50,4 +50,4 @@ const getTimeseries = async () => {
   }
 };
 
-cron.schedule("0 1 * * *", getTimeseries);
+cron.schedule("0 * * * *", getTimeseries);
