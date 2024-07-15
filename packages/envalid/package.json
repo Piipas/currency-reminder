@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "build": "tsc"
   },
@@ -11,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "envalid": "^8.0.0",
-    "@repo/typescript-config": "workspace:*"
+    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.14.6"

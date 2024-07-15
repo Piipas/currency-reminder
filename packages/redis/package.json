@@ -1,27 +1,20 @@
 {
-  "name": "reminder",
+  "name": "@repo/redis",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "execute": "node dist/index.js",
     "build": "tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@repo/db": "workspace:*",
+    "@redis/json": "^1.0.6",
     "@repo/envalid": "workspace:*",
     "@repo/eslint-config": "workspace:*",
-    "@repo/redis": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "axios": "^1.7.2",
-    "node-cron": "^3.0.3",
-    "nodemailer": "^6.9.14"
-  },
-  "devDependencies": {
-    "@types/nodemailer": "^6.4.15"
+    "redis": "^4.6.15"
   }
 }

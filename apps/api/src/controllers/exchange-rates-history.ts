@@ -3,9 +3,10 @@ import redis from "@/config/redis-client";
 
 export const getExchangeRatesHistory = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const timeseries = await redis.json.get("currencyreminder:timeseries");
+    const timeseries = await redis.get("currencyreminder:timeseries");
+    if (!timeseries) return res.sendStatus(404);
 
-    res.status(200).json(timeseries);
+    res.status(200).json(JSON.parse(timeseries));
   } catch (error) {
     next(error);
   }
