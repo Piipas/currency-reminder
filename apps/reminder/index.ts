@@ -1,10 +1,10 @@
-import env from "@repo/envalid/src/reminder";
 import redis from "@repo/redis";
 import axios from "axios";
 import { formatToday, minusDays } from "./lib/utils";
 import { transporter } from "config/nodemailer-client";
 import cron from "node-cron";
 import { db } from "@repo/db";
+import env from "config/envalid-init";
 
 const getTimeseries = async () => {
   try {

@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
-import env from "@repo/envalid/src/api";
 import { router } from "@/routes";
 import cors from "cors";
+import env from "config/envalid-init";
 
 const port = env.PORT || 4000;
 const app = express();
@@ -9,7 +9,7 @@ const app = express();
 app.use(
   cors({
     origin: function (origin, callback) {
-      if ("http://localhost:4000,http://localhost:5173".split(",").indexOf(origin as string) !== -1) {
+      if (origin && (env.CORS_WHITELIST as string).split(",").includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));

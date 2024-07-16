@@ -5,8 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "execute": "node dist/index.js",
-    "build": "tsc"
+    "execute": "tsx --env-file=.env index.ts",
+    "build": "tsc && tsc-alias",
+    "preview": "node --env-file=.env dist/index.js",
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +21,7 @@
     "@repo/typescript-config": "workspace:*",
     "@types/node-cron": "^3.0.11",
     "axios": "^1.7.2",
+    "envalid": "^8.0.0",
     "node-cron": "^3.0.3",
     "nodemailer": "^6.9.14"
   },
