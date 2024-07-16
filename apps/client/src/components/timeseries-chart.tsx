@@ -60,7 +60,7 @@ const TimeSeriesChart = () => {
                 interval={7}
               />
               <YAxis domain={[minValue, maxValue]} hide={true} />
-              <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="dot" hideLabel />} />
+              <ChartTooltip content={<ChartTooltipContent indicator="line" />} />
               <Area
                 dataKey="MAD"
                 type="linear"
