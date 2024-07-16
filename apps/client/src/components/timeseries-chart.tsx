@@ -30,7 +30,7 @@ const TimeSeriesChart = () => {
   const getCurrencyData = async () => {
     try {
       setIsLoading(true);
-      const { data } = await axios.get("http://localhost:4000/history", { withCredentials: true });
+      const { data } = await axios.get("http://localhost:4000/history");
       setCurrencyData(data);
       handleMaxMinValues(data);
     } catch (error) {

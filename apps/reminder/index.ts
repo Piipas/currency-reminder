@@ -45,8 +45,6 @@ const getTimeseries = async () => {
   } catch (error) {
     console.log("Something went wrong!");
     console.log(error);
-  } finally {
-    redis.disconnect();
   }
 };
 
