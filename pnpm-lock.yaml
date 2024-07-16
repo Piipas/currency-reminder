@@ -14,9 +14,6 @@ importers:
 
   apps/api:
     dependencies:
-      '@prisma/client':
-        specifier: ^5.16.2
-        version: 5.16.2
       '@redis/json':
         specifier: ^1.0.6
         version: 1.0.6(@redis/client@1.5.17)

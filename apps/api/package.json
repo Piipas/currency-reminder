@@ -12,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^5.16.2",
     "@redis/json": "^1.0.6",
     "@repo/db": "workspace:*",
     "@repo/envalid": "workspace:*",

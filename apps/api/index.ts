@@ -2,7 +2,6 @@ import express, { NextFunction, Request, Response } from "express";
 import env from "@repo/envalid/src/api";
 import { router } from "@/routes";
 import cors from "cors";
-import { Prisma } from "@prisma/client";
 
 const port = env.PORT || 4000;
 const app = express();
@@ -16,8 +15,7 @@ app.use(
         callback(new Error("Not allowed by CORS"));
       }
     },
-    credentials: true,
-    allowedHeaders: ["Authorization", "Content-Type"],
+    allowedHeaders: ["Content-Type"],
   }),
 );
 app.use(express.json());
@@ -25,14 +23,6 @@ app.use("/", router);
 
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
   console.log(error);
-  if (error instanceof Prisma.PrismaClientKnownRequestError) {
-    switch (error.code) {
-      case "P2002":
-        return res.status(409).json({ message: "You are trying to insert an item with an existing unique value!" });
-      case "P2025":
-        return res.status(404).json({ message: "The item you are looking for, does not exist!" });
-    }
-  }
   res.status(500).json({ message: "Internal Server Error!" });
 });
 
