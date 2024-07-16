@@ -14,6 +14,7 @@
   "dependencies": {
     "@redis/json": "^1.0.6",
     "@repo/db": "workspace:*",
+    "@repo/redis": "workspace:*",
     "@repo/envalid": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",

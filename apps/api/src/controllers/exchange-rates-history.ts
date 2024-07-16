@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import redis from "@/config/redis-client";
+import redis from "@repo/redis";
 
 export const getExchangeRatesHistory = async (req: Request, res: Response, next: NextFunction) => {
   try {
