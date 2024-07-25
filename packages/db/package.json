@@ -13,8 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.16.2",
-    "@repo/envalid": "workspace:*",
     "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*"
+    "@repo/typescript-config": "workspace:*",
+    "prisma": "^5.17.0"
   }
 }

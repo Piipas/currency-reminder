@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "@redis/json": "^1.0.6",
-    "@repo/envalid": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "redis": "^4.6.15"

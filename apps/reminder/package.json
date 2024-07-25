@@ -15,7 +15,6 @@
   "license": "ISC",
   "dependencies": {
     "@repo/db": "workspace:*",
-    "@repo/envalid": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/redis": "workspace:*",
     "@repo/typescript-config": "workspace:*",
