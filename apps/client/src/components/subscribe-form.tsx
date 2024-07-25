@@ -25,7 +25,7 @@ const SubscribeForm = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       setIsPending(true);
-      await axios.post("http://localhost:4000/subscribe", values);
+      await axios.post(`${import.meta.env.VITE_API_URL}/subscribe`, values);
       form.resetField("email");
       setIsSuccess(true);
     } catch (error) {
