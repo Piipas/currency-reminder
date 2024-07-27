@@ -45,6 +45,7 @@ COPY --from=build /app/apps/api/dist /app/apps/api/dist/
 RUN pnpm install --prod --frozen-lockfile
 
 ARG DIRECT_URL
+ARG DATABASE_URL
 
 # Generate database schema
 RUN turbo run generate --filter=@repo/db

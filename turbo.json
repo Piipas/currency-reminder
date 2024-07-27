@@ -16,7 +16,8 @@
       "dependsOn": ["^generate"]
     },
     "deploy": {
-      "dependsOn": ["^deploy"]
+      "dependsOn": ["^deploy"],
+      "env": ["DATABASE_URL", "DIRECT_URL"]
     }
   }
 }
