@@ -37,9 +37,8 @@ const getTimeseries = async () => {
       await transporter.sendMail({
         from: '"Pipas 👻" <boombeach449@gmail.com>', // sender address
         to: preparedEmails, // list of receivers
-        subject: "USD/MAD updated.", // Subject
-        text: "Hello world?", // plain text body
-        html: "<b>Hello world?</b>", // html body
+        subject: "Heads up! 1 USD = 10 MAD", // Subject
+        html: `<p>Just a quick heads up – the exchange rate just hit your mark. Right now, 1 USD is ${timeseries.at(-1)?.MAD} MAD.</p><p>If you've got any currency exchanges in mind, now might be the time!</p><p>Thanks for being with us!</p><p>Cheers,</p>`, // html body
       });
     }
   } catch (error) {

@@ -52,7 +52,7 @@ const SubscribeForm = () => {
           )}
         />
         <Button type="submit" size={"lg"} className="h-14" disabled={isPending}>
-          Submit
+          Subscribe
         </Button>
       </form>
     </Form>
