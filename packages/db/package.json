@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "prisma generate && tsc",
-    "generate": "prisma generate"
+    "generate": "prisma generate",
+    "deploy": "prisma migrate deploy"
   },
   "keywords": [],
   "author": "",

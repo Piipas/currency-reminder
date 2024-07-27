@@ -1,7 +1,5 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
-  "globalEnv": ["NEXT_PUBLIC_API_URL"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
@@ -13,6 +11,12 @@
     },
     "preview": {
       "dependsOn": ["^preview"]
+    },
+    "generate": {
+      "dependsOn": ["^generate"]
+    },
+    "deploy": {
+      "dependsOn": ["^deploy"]
     }
   }
 }

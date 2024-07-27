@@ -1,0 +1,54 @@
+# Use a lightweight Node.js image
+FROM node:20-alpine AS build
+
+# Set the working directory
+WORKDIR /app
+
+# Install turbo and pnpm globally
+RUN npm install -g turbo@2.0.4 pnpm
+
+# Copy all files to the container
+COPY . .
+
+# Install dependencies using pnpm
+RUN pnpm install --frozen-lockfile
+
+# Build the application with TurboRepo
+RUN turbo run build --filter=@repo/db --filter=@repo/redis && turbo run build --filter=reminder
+
+# Use a smaller Node.js runtime image for production
+FROM node:20-alpine AS runtime
+
+# Set the working directory
+WORKDIR /app
+
+# Install pnpm globally
+RUN npm install -g turbo@2.0.4 pnpm
+
+# Copy the root package.json
+COPY --from=build /app/package.json /app/pnpm-lock.yaml /app/pnpm-workspace.yaml /app/turbo.json /app/
+
+# Copy package.json and dist folders for all packages
+COPY --from=build /app/packages/db/package.json /app/packages/db/
+COPY --from=build /app/packages/db/dist /app/packages/db/dist/
+COPY --from=build /app/packages/db/prisma /app/packages/db/prisma
+
+# Copy package.json and dist folders for all packages
+COPY --from=build /app/packages/redis/package.json /app/packages/redis/
+COPY --from=build /app/packages/redis/dist /app/packages/redis/dist/
+
+# Copy package.json and dist folder for the reminder
+COPY --from=build /app/apps/reminder/package.json /app/apps/reminder/
+COPY --from=build /app/apps/reminder/dist /app/apps/reminder/dist/
+
+# Install only production dependencies
+RUN pnpm install --prod --frozen-lockfile
+
+# Generate database schema
+RUN turbo run generate --filter=@repo/db
+
+# Expose the application port
+EXPOSE 4000
+
+# Define the command to run the application
+CMD ["node", "apps/reminder/dist/index.js"]

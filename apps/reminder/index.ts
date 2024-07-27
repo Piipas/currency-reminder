@@ -48,4 +48,4 @@ const getTimeseries = async () => {
   }
 };
 
-cron.schedule("0 * * * *", getTimeseries);
+cron.schedule(env.CRONJOB_INTERVAL, getTimeseries);

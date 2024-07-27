@@ -46,6 +46,7 @@ dist
 .DS_Store
 .vscode
 .env.example
+.env
 LICENSE
 README.md
 .dockerignore

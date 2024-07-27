@@ -25,6 +25,7 @@
     "nodemailer": "^6.9.14"
   },
   "devDependencies": {
-    "@types/nodemailer": "^6.4.15"
+    "@types/nodemailer": "^6.4.15",
+    "tsc-alias": "^1.8.10"
   }
 }

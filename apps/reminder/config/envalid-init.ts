@@ -9,6 +9,8 @@ const env = cleanEnv(process.env, {
   SMTP_SECURE: bool(),
   SMTP_USER: str(),
   SMTP_PASS: str(),
+
+  CRONJOB_INTERVAL: str(),
 });
 
 export default env;
