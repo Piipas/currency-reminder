@@ -44,6 +44,7 @@ COPY --from=build /app/apps/api/dist /app/apps/api/dist/
 # Install only production dependencies
 RUN pnpm install --prod --frozen-lockfile
 
+# Declare buildtime arguments
 ARG DIRECT_URL
 ARG DATABASE_URL
 

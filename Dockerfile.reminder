@@ -44,6 +44,10 @@ COPY --from=build /app/apps/reminder/dist /app/apps/reminder/dist/
 # Install only production dependencies
 RUN pnpm install --prod --frozen-lockfile
 
+# Declare buildtime arguments
+ARG DIRECT_URL
+ARG DATABASE_URL
+
 # Generate database schema
 RUN turbo run generate --filter=@repo/db
 
